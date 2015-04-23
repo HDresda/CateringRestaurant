@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,10 +61,22 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -70,11 +97,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="Control de Usuario\UCBotonPlato.Designer.vb">
+      <DependentUpon>UCBotonPlato.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control de Usuario\UCBotonPlato.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Punto Venta\FrmPuntoVenta.Designer.vb">
+      <DependentUpon>FrmPuntoVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Punto Venta\FrmPuntoVenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="MDIPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIPrincipal.Designer.vb">
+      <DependentUpon>MDIPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -94,11 +133,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Control de Usuario\UCBotonPlato.resx">
+      <DependentUpon>UCBotonPlato.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Punto Venta\FrmPuntoVenta.resx">
+      <DependentUpon>FrmPuntoVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIPrincipal.resx">
+      <DependentUpon>MDIPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +159,140 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Punto Venta01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Punto Venta02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Punto Venta02-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comida-criolla01-02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comida-criolla01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Evento01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Evento01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlacenaCocina01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\costos01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cesta-compra03-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cesta-compra03-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Informes02-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Informes02-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\costos01-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\costos01-012.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empresa01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Configuración01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Configuración01-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plato02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Catering.BLL.BE\Catering.BLL.BE.vbproj">
+      <Project>{ca37ae3c-757e-42c3-a1c7-971b214a233f}</Project>
+      <Name>Catering.BLL.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Catering.BLL.BL\Catering.BLL.BL.vbproj">
+      <Project>{4239bdcc-cf56-4a60-b330-510dc56acf6d}</Project>
+      <Name>Catering.BLL.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.LibraryApp\Framework.LibraryApp.vbproj">
+      <Project>{D1E6801C-9AB6-43AD-B8C2-2062F1B6862B}</Project>
+      <Name>Framework.LibraryApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plato02-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plato02-02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Impresion01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket01-011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket01-02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket02-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fotocheck01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Billetera01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket03-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket04-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calenderio01-01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Retornar01-01.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

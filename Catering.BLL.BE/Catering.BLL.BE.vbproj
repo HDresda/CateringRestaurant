@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -62,7 +63,32 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Categoria.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comensal.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa_Sede.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa_Turno.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloCatering.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -78,6 +104,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Plan_Atencion.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Plato.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ObtenerPlanAtencion_Result.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.vb">
+      <DependentUpon>ModeloCatering.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -88,6 +129,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ModeloCatering.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloCatering.vb</LastGenOutput>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -97,6 +142,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entidades\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

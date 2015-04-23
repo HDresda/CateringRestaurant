@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CateringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_Categoria" />
+          </Key>
+          <Property Name="id_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_Categoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_Categoria" Type="int" Nullable="false" />
+          <Property Name="estado_Categoria" Type="int" />
+          <Property Name="fecha_Creacion_Categoria" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Categoria" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Creacion_Actualizacion" Type="datetime" />
+          <Property Name="usuario_Creacion_Actualizacion" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Comensal">
+          <Key>
+            <PropertyRef Name="id_Comensal" />
+          </Key>
+          <Property Name="id_Comensal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_Comensal" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombres_Comensal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellidos_Comensal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="area_Comensal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="puesto_Comensal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_Comensal" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Comensal" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Comensal" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Comensal" Type="datetime" />
+          <Property Name="usuario_Actualizacion" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="id_Empresa" />
+          </Key>
+          <Property Name="id_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="razon_Social_Empresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="rUC_Empresa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="direccion_Empresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="distrito_Empresa" Type="int" Nullable="false" />
+          <Property Name="provincia_Empresa" Type="int" Nullable="false" />
+          <Property Name="departamento_Empresa" Type="int" Nullable="false" />
+          <Property Name="telefono1_Empresa" Type="varchar" MaxLength="20" />
+          <Property Name="telefono2_Empresa" Type="varchar" MaxLength="20" />
+          <Property Name="contacto1_Empresa" Type="varchar" MaxLength="50" />
+          <Property Name="email1_Empresa" Type="varchar" MaxLength="50" />
+          <Property Name="contacto2_Empresa" Type="varchar" MaxLength="50" />
+          <Property Name="email2_Empresa" Type="varchar" MaxLength="50" />
+          <Property Name="estado_Empresa" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Empresa" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Empresa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Empresa" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Empresa" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Empresa_Sede">
+          <Key>
+            <PropertyRef Name="id_Empresa_Sede" />
+            <PropertyRef Name="id_Sede" />
+          </Key>
+          <Property Name="id_Empresa_Sede" Type="int" Nullable="false" />
+          <Property Name="id_Sede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_Sede" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_Sede" Type="varchar" MaxLength="100" />
+          <Property Name="distrito_Sede" Type="int" />
+          <Property Name="provinicia_Sede" Type="int" />
+          <Property Name="departamento_Sede" Type="int" />
+          <Property Name="estado_Sese" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Sede" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Sede" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Sede" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Sede" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Empresa_Turno">
+          <Key>
+            <PropertyRef Name="id_Empresa_Turno" />
+            <PropertyRef Name="id_Sede_Turno" />
+            <PropertyRef Name="id_Turno" />
+          </Key>
+          <Property Name="id_Empresa_Turno" Type="int" Nullable="false" />
+          <Property Name="id_Sede_Turno" Type="int" Nullable="false" />
+          <Property Name="id_Turno" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="descripcion_Turno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_Turno" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Turno" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Turno" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Turno" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Turno" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id_Estado" />
+          </Key>
+          <Property Name="id_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_Estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_Creacion_Estado" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="id_Menu" />
+          </Key>
+          <Property Name="id_Menu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_Menu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="costo_Estandar_Menu" Type="float" Nullable="false" />
+          <Property Name="costo_Real_Menu" Type="float" Nullable="false" />
+          <Property Name="precio_Venta_Menu" Type="float" Nullable="false" />
+          <Property Name="id_Categoria_Menu" Type="int" Nullable="false" />
+          <Property Name="imagen_Menu" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="estado_Menu" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Menu" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Menu" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Menu" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Menu" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Plan_Atencion">
+          <Key>
+            <PropertyRef Name="id_Plan" />
+            <PropertyRef Name="empresa_Plan" />
+            <PropertyRef Name="sede_Plan" />
+            <PropertyRef Name="fecha_Plan" />
+            <PropertyRef Name="turno_Plan" />
+          </Key>
+          <Property Name="id_Plan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empresa_Plan" Type="int" Nullable="false" />
+          <Property Name="sede_Plan" Type="int" Nullable="false" />
+          <Property Name="fecha_Plan" Type="date" Nullable="false" />
+          <Property Name="turno_Plan" Type="int" Nullable="false" />
+          <Property Name="id_Categoria_Plan" Type="int" Nullable="false" />
+          <Property Name="id_Item_Plan" Type="int" Nullable="false" />
+          <Property Name="cantidad_Plan" Type="float" Nullable="false" />
+          <Property Name="estado_Plan" Type="int" Nullable="false" />
+          <Property Name="precio_Venta_Plan" Type="float" Nullable="false" />
+          <Property Name="costo_Estandar_Plan" Type="float" Nullable="false" />
+          <Property Name="costo_Real_Plan" Type="float" Nullable="false" />
+          <Property Name="fecha_Creacion_Plan" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Plan" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Plan" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Plan" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="id_Plato" />
+          </Key>
+          <Property Name="id_Plato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_Plato" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Categoria_Plato" Type="int" Nullable="false" />
+          <Property Name="costo_Estandar_Plato" Type="float" Nullable="false" />
+          <Property Name="costo_Real_Plato" Type="float" Nullable="false" />
+          <Property Name="precio_Venta_Plato" Type="float" Nullable="false" />
+          <Property Name="imagen_Plato" Type="varchar(max)" Nullable="false" />
+          <Property Name="estado_Plato" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Plato" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Plato" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Plato" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Plato" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_Producto" />
+          </Key>
+          <Property Name="id_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_Producto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Categoria_Producto" Type="int" Nullable="false" />
+          <Property Name="stock_Producto" Type="float" Nullable="false" />
+          <Property Name="stock_Minimo_Producto" Type="float" Nullable="false" />
+          <Property Name="costo_Estandar_Producto" Type="float" Nullable="false" />
+          <Property Name="costo_Real_Producto" Type="float" Nullable="false" />
+          <Property Name="precio_Venta_Producto" Type="float" Nullable="false" />
+          <Property Name="imagen_Producto" Type="varchar" MaxLength="100" />
+          <Property Name="estado_Producto" Type="int" Nullable="false" />
+          <Property Name="fecha_Creacion_Producto" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Producto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Producto" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Producto" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="nombres_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_Usuario" Type="int" />
+          <Property Name="fecha_Creacion_Usuario" Type="datetime" Nullable="false" />
+          <Property Name="usuario_Creacion_Usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Usuario" Type="datetime" />
+          <Property Name="usuario_Actualizacion_Usuario" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Function Name="usp_ObtenerPlanAtencion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Empresa" Type="int" Mode="In" />
+          <Parameter Name="Sede" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Plan" Type="date" Mode="In" />
+          <Parameter Name="Turno" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CateringModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comensal" EntityType="Self.Comensal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa_Sede" EntityType="Self.Empresa_Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa_Turno" EntityType="Self.Empresa_Turno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan_Atencion" EntityType="Self.Plan_Atencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CateringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comensal">
+          <Key>
+            <PropertyRef Name="id_Comensal" />
+          </Key>
+          <Property Name="id_Comensal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_Comensal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombres_Comensal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos_Comensal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="area_Comensal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="puesto_Comensal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_Comensal" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Comensal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Comensal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Comensal" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="id_Empresa" />
+          </Key>
+          <Property Name="id_Empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razon_Social_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rUC_Empresa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distrito_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="provincia_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="departamento_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="telefono1_Empresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2_Empresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contacto1_Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email1_Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contacto2_Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email2_Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Empresa" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Empresa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Empresa" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Empresa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empresa_Sede">
+          <Key>
+            <PropertyRef Name="id_Empresa_Sede" />
+            <PropertyRef Name="id_Sede" />
+          </Key>
+          <Property Name="id_Empresa_Sede" Type="Int32" Nullable="false" />
+          <Property Name="id_Sede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_Sede" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_Sede" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="distrito_Sede" Type="Int32" />
+          <Property Name="provinicia_Sede" Type="Int32" />
+          <Property Name="departamento_Sede" Type="Int32" />
+          <Property Name="estado_Sese" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Sede" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Sede" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Sede" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Sede" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empresa_Turno">
+          <Key>
+            <PropertyRef Name="id_Empresa_Turno" />
+            <PropertyRef Name="id_Sede_Turno" />
+            <PropertyRef Name="id_Turno" />
+          </Key>
+          <Property Name="id_Empresa_Turno" Type="Int32" Nullable="false" />
+          <Property Name="id_Sede_Turno" Type="Int32" Nullable="false" />
+          <Property Name="id_Turno" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion_Turno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_Turno" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Turno" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Turno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Turno" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Turno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id_Estado" />
+          </Key>
+          <Property Name="id_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Creacion_Estado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="id_Menu" />
+          </Key>
+          <Property Name="id_Menu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_Menu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="costo_Estandar_Menu" Type="Double" Nullable="false" />
+          <Property Name="costo_Real_Menu" Type="Double" Nullable="false" />
+          <Property Name="precio_Venta_Menu" Type="Double" Nullable="false" />
+          <Property Name="id_Categoria_Menu" Type="Int32" Nullable="false" />
+          <Property Name="estado_Menu" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Menu" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Menu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Menu" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Menu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_Menu" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Plan_Atencion">
+          <Key>
+            <PropertyRef Name="id_Plan" />
+            <PropertyRef Name="fecha_Plan" />
+            <PropertyRef Name="turno_Plan" />
+            <PropertyRef Name="empresa_Plan" />
+            <PropertyRef Name="sede_Plan" />
+          </Key>
+          <Property Name="id_Plan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_Plan" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="turno_Plan" Type="Int32" Nullable="false" />
+          <Property Name="id_Categoria_Plan" Type="Int32" Nullable="false" />
+          <Property Name="id_Item_Plan" Type="Int32" Nullable="false" />
+          <Property Name="estado_Plan" Type="Int32" Nullable="false" />
+          <Property Name="precio_Venta_Plan" Type="Double" Nullable="false" />
+          <Property Name="costo_Estandar_Plan" Type="Double" Nullable="false" />
+          <Property Name="costo_Real_Plan" Type="Double" Nullable="false" />
+          <Property Name="fecha_Creacion_Plan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Plan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Plan" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Plan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad_Plan" Type="Double" Nullable="false" />
+          <Property Name="empresa_Plan" Type="Int32" Nullable="false" />
+          <Property Name="sede_Plan" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="id_Plato" />
+          </Key>
+          <Property Name="id_Plato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_Plato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Categoria_Plato" Type="Int32" Nullable="false" />
+          <Property Name="costo_Estandar_Plato" Type="Double" Nullable="false" />
+          <Property Name="costo_Real_Plato" Type="Double" Nullable="false" />
+          <Property Name="precio_Venta_Plato" Type="Double" Nullable="false" />
+          <Property Name="estado_Plato" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Plato" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Plato" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Plato" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Plato" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_Plato" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombres_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_Usuario" Type="Int32" />
+          <Property Name="fecha_Creacion_Usuario" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_Actualizacion_Usuario" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CateringEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comensal" EntityType="Self.Comensal" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Empresa_Sede" EntityType="Self.Empresa_Sede" />
+          <EntitySet Name="Empresa_Turno" EntityType="Self.Empresa_Turno" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Plan_Atencion" EntityType="Self.Plan_Atencion" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Producto" EntityType="CateringModel.Producto" />
+          <EntitySet Name="Categoria" EntityType="CateringModel.Categoria" />
+          <FunctionImport Name="usp_ObtenerPlanAtencion" ReturnType="Collection(CateringModel.usp_ObtenerPlanAtencion_Result)">
+            <Parameter Name="Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="Sede" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Plan" Mode="In" Type="DateTime" />
+            <Parameter Name="Turno" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_Producto" />
+          </Key>
+          <Property Name="id_Producto" Type="Int32" Nullable="false" />
+          <Property Name="descripcion_Producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Categoria_Producto" Type="Int32" Nullable="false" />
+          <Property Name="stock_Producto" Type="Double" Nullable="false" />
+          <Property Name="stock_Minimo_Producto" Type="Double" Nullable="false" />
+          <Property Name="costo_Estandar_Producto" Type="Double" Nullable="false" />
+          <Property Name="costo_Real_Producto" Type="Double" Nullable="false" />
+          <Property Name="precio_Venta_Producto" Type="Double" Nullable="false" />
+          <Property Name="estado_Producto" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Creacion_Producto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Producto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_Actualizacion_Producto" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Actualizacion_Producto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_Categoria" />
+          </Key>
+          <Property Name="id_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_Categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_Categoria" Type="Int32" Nullable="false" />
+          <Property Name="estado_Categoria" Type="Int32" />
+          <Property Name="fecha_Creacion_Categoria" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario_Creacion_Categoria" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_Creacion_Actualizacion" Type="DateTime" Precision="3" />
+          <Property Name="usuario_Creacion_Actualizacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="usp_ObtenerPlanAtencion_Result">
+          <Property Type="Int32" Name="id_Plan" Nullable="false" />
+          <Property Type="Int32" Name="empresa_Plan" Nullable="false" />
+          <Property Type="Int32" Name="sede_Plan" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_Plan" Nullable="false" />
+          <Property Type="Int32" Name="turno_Plan" Nullable="false" />
+          <Property Type="Int32" Name="id_Categoria_Plan" Nullable="false" />
+          <Property Type="Int32" Name="id_Item_Plan" Nullable="false" />
+          <Property Type="Double" Name="cantidad_Plan" Nullable="false" />
+          <Property Type="Int32" Name="estado_Plan" Nullable="false" />
+          <Property Type="Double" Name="precio_Venta_Plan" Nullable="false" />
+          <Property Type="Double" Name="costo_Estandar_Plan" Nullable="false" />
+          <Property Type="Double" Name="costo_Real_Plan" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_Creacion_Plan" Nullable="false" Precision="23" />
+          <Property Type="String" Name="usuario_Creacion_Plan" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="fecha_Actualizacion_Plan" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_Actualizacion_Plan" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="descripcion_Menu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="imagen_Menu" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="descripcion_Plato" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="imagen_Plato" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CateringModelStoreContainer" CdmEntityContainer="CateringEntities">
+          <EntitySetMapping Name="Comensal">
+            <EntityTypeMapping TypeName="CateringModel.Comensal">
+              <MappingFragment StoreEntitySet="Comensal">
+                <ScalarProperty Name="id_Comensal" ColumnName="id_Comensal" />
+                <ScalarProperty Name="codigo_Comensal" ColumnName="codigo_Comensal" />
+                <ScalarProperty Name="nombres_Comensal" ColumnName="nombres_Comensal" />
+                <ScalarProperty Name="apellidos_Comensal" ColumnName="apellidos_Comensal" />
+                <ScalarProperty Name="area_Comensal" ColumnName="area_Comensal" />
+                <ScalarProperty Name="puesto_Comensal" ColumnName="puesto_Comensal" />
+                <ScalarProperty Name="estado_Comensal" ColumnName="estado_Comensal" />
+                <ScalarProperty Name="fecha_Creacion_Comensal" ColumnName="fecha_Creacion_Comensal" />
+                <ScalarProperty Name="usuario_Creacion_Comensal" ColumnName="usuario_Creacion_Comensal" />
+                <ScalarProperty Name="fecha_Actualizacion_Comensal" ColumnName="fecha_Actualizacion_Comensal" />
+                <ScalarProperty Name="usuario_Actualizacion" ColumnName="usuario_Actualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="CateringModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="id_Empresa" ColumnName="id_Empresa" />
+                <ScalarProperty Name="razon_Social_Empresa" ColumnName="razon_Social_Empresa" />
+                <ScalarProperty Name="rUC_Empresa" ColumnName="rUC_Empresa" />
+                <ScalarProperty Name="direccion_Empresa" ColumnName="direccion_Empresa" />
+                <ScalarProperty Name="distrito_Empresa" ColumnName="distrito_Empresa" />
+                <ScalarProperty Name="provincia_Empresa" ColumnName="provincia_Empresa" />
+                <ScalarProperty Name="departamento_Empresa" ColumnName="departamento_Empresa" />
+                <ScalarProperty Name="telefono1_Empresa" ColumnName="telefono1_Empresa" />
+                <ScalarProperty Name="telefono2_Empresa" ColumnName="telefono2_Empresa" />
+                <ScalarProperty Name="contacto1_Empresa" ColumnName="contacto1_Empresa" />
+                <ScalarProperty Name="email1_Empresa" ColumnName="email1_Empresa" />
+                <ScalarProperty Name="contacto2_Empresa" ColumnName="contacto2_Empresa" />
+                <ScalarProperty Name="email2_Empresa" ColumnName="email2_Empresa" />
+                <ScalarProperty Name="estado_Empresa" ColumnName="estado_Empresa" />
+                <ScalarProperty Name="fecha_Creacion_Empresa" ColumnName="fecha_Creacion_Empresa" />
+                <ScalarProperty Name="usuario_Creacion_Empresa" ColumnName="usuario_Creacion_Empresa" />
+                <ScalarProperty Name="fecha_Actualizacion_Empresa" ColumnName="fecha_Actualizacion_Empresa" />
+                <ScalarProperty Name="usuario_Actualizacion_Empresa" ColumnName="usuario_Actualizacion_Empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa_Sede">
+            <EntityTypeMapping TypeName="CateringModel.Empresa_Sede">
+              <MappingFragment StoreEntitySet="Empresa_Sede">
+                <ScalarProperty Name="id_Empresa_Sede" ColumnName="id_Empresa_Sede" />
+                <ScalarProperty Name="id_Sede" ColumnName="id_Sede" />
+                <ScalarProperty Name="nombre_Sede" ColumnName="nombre_Sede" />
+                <ScalarProperty Name="direccion_Sede" ColumnName="direccion_Sede" />
+                <ScalarProperty Name="distrito_Sede" ColumnName="distrito_Sede" />
+                <ScalarProperty Name="provinicia_Sede" ColumnName="provinicia_Sede" />
+                <ScalarProperty Name="departamento_Sede" ColumnName="departamento_Sede" />
+                <ScalarProperty Name="estado_Sese" ColumnName="estado_Sese" />
+                <ScalarProperty Name="fecha_Creacion_Sede" ColumnName="fecha_Creacion_Sede" />
+                <ScalarProperty Name="usuario_Creacion_Sede" ColumnName="usuario_Creacion_Sede" />
+                <ScalarProperty Name="fecha_Actualizacion_Sede" ColumnName="fecha_Actualizacion_Sede" />
+                <ScalarProperty Name="usuario_Actualizacion_Sede" ColumnName="usuario_Actualizacion_Sede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa_Turno">
+            <EntityTypeMapping TypeName="CateringModel.Empresa_Turno">
+              <MappingFragment StoreEntitySet="Empresa_Turno">
+                <ScalarProperty Name="id_Empresa_Turno" ColumnName="id_Empresa_Turno" />
+                <ScalarProperty Name="id_Sede_Turno" ColumnName="id_Sede_Turno" />
+                <ScalarProperty Name="id_Turno" ColumnName="id_Turno" />
+                <ScalarProperty Name="descripcion_Turno" ColumnName="descripcion_Turno" />
+                <ScalarProperty Name="estado_Turno" ColumnName="estado_Turno" />
+                <ScalarProperty Name="fecha_Creacion_Turno" ColumnName="fecha_Creacion_Turno" />
+                <ScalarProperty Name="usuario_Creacion_Turno" ColumnName="usuario_Creacion_Turno" />
+                <ScalarProperty Name="fecha_Actualizacion_Turno" ColumnName="fecha_Actualizacion_Turno" />
+                <ScalarProperty Name="usuario_Actualizacion_Turno" ColumnName="usuario_Actualizacion_Turno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="CateringModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
+                <ScalarProperty Name="descripcion_Estado" ColumnName="descripcion_Estado" />
+                <ScalarProperty Name="fecha_Creacion_Estado" ColumnName="fecha_Creacion_Estado" />
+                <ScalarProperty Name="usuario_Creacion_Estado" ColumnName="usuario_Creacion_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="CateringModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="imagen_Menu" ColumnName="imagen_Menu" />
+                <ScalarProperty Name="id_Menu" ColumnName="id_Menu" />
+                <ScalarProperty Name="descripcion_Menu" ColumnName="descripcion_Menu" />
+                <ScalarProperty Name="costo_Estandar_Menu" ColumnName="costo_Estandar_Menu" />
+                <ScalarProperty Name="costo_Real_Menu" ColumnName="costo_Real_Menu" />
+                <ScalarProperty Name="precio_Venta_Menu" ColumnName="precio_Venta_Menu" />
+                <ScalarProperty Name="id_Categoria_Menu" ColumnName="id_Categoria_Menu" />
+                <ScalarProperty Name="estado_Menu" ColumnName="estado_Menu" />
+                <ScalarProperty Name="fecha_Creacion_Menu" ColumnName="fecha_Creacion_Menu" />
+                <ScalarProperty Name="usuario_Creacion_Menu" ColumnName="usuario_Creacion_Menu" />
+                <ScalarProperty Name="fecha_Actualizacion_Menu" ColumnName="fecha_Actualizacion_Menu" />
+                <ScalarProperty Name="usuario_Actualizacion_Menu" ColumnName="usuario_Actualizacion_Menu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan_Atencion">
+            <EntityTypeMapping TypeName="CateringModel.Plan_Atencion">
+              <MappingFragment StoreEntitySet="Plan_Atencion">
+                <ScalarProperty Name="sede_Plan" ColumnName="sede_Plan" />
+                <ScalarProperty Name="empresa_Plan" ColumnName="empresa_Plan" />
+                <ScalarProperty Name="cantidad_Plan" ColumnName="cantidad_Plan" />
+                <ScalarProperty Name="id_Plan" ColumnName="id_Plan" />
+                <ScalarProperty Name="fecha_Plan" ColumnName="fecha_Plan" />
+                <ScalarProperty Name="turno_Plan" ColumnName="turno_Plan" />
+                <ScalarProperty Name="id_Categoria_Plan" ColumnName="id_Categoria_Plan" />
+                <ScalarProperty Name="id_Item_Plan" ColumnName="id_Item_Plan" />
+                <ScalarProperty Name="estado_Plan" ColumnName="estado_Plan" />
+                <ScalarProperty Name="precio_Venta_Plan" ColumnName="precio_Venta_Plan" />
+                <ScalarProperty Name="costo_Estandar_Plan" ColumnName="costo_Estandar_Plan" />
+                <ScalarProperty Name="costo_Real_Plan" ColumnName="costo_Real_Plan" />
+                <ScalarProperty Name="fecha_Creacion_Plan" ColumnName="fecha_Creacion_Plan" />
+                <ScalarProperty Name="usuario_Creacion_Plan" ColumnName="usuario_Creacion_Plan" />
+                <ScalarProperty Name="fecha_Actualizacion_Plan" ColumnName="fecha_Actualizacion_Plan" />
+                <ScalarProperty Name="usuario_Actualizacion_Plan" ColumnName="usuario_Actualizacion_Plan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato">
+            <EntityTypeMapping TypeName="CateringModel.Plato">
+              <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="imagen_Plato" ColumnName="imagen_Plato" />
+                <ScalarProperty Name="id_Plato" ColumnName="id_Plato" />
+                <ScalarProperty Name="descripcion_Plato" ColumnName="descripcion_Plato" />
+                <ScalarProperty Name="id_Categoria_Plato" ColumnName="id_Categoria_Plato" />
+                <ScalarProperty Name="costo_Estandar_Plato" ColumnName="costo_Estandar_Plato" />
+                <ScalarProperty Name="costo_Real_Plato" ColumnName="costo_Real_Plato" />
+                <ScalarProperty Name="precio_Venta_Plato" ColumnName="precio_Venta_Plato" />
+                <ScalarProperty Name="estado_Plato" ColumnName="estado_Plato" />
+                <ScalarProperty Name="fecha_Creacion_Plato" ColumnName="fecha_Creacion_Plato" />
+                <ScalarProperty Name="usuario_Creacion_Plato" ColumnName="usuario_Creacion_Plato" />
+                <ScalarProperty Name="fecha_Actualizacion_Plato" ColumnName="fecha_Actualizacion_Plato" />
+                <ScalarProperty Name="usuario_Actualizacion_Plato" ColumnName="usuario_Actualizacion_Plato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="CateringModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="nombres_Usuario" ColumnName="nombres_Usuario" />
+                <ScalarProperty Name="apellidos_Usuario" ColumnName="apellidos_Usuario" />
+                <ScalarProperty Name="estado_Usuario" ColumnName="estado_Usuario" />
+                <ScalarProperty Name="fecha_Creacion_Usuario" ColumnName="fecha_Creacion_Usuario" />
+                <ScalarProperty Name="usuario_Creacion_Usuario" ColumnName="usuario_Creacion_Usuario" />
+                <ScalarProperty Name="fecha_Actualizacion_Usuario" ColumnName="fecha_Actualizacion_Usuario" />
+                <ScalarProperty Name="usuario_Actualizacion_Usuario" ColumnName="usuario_Actualizacion_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="CateringModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="imagen_Producto" ColumnName="imagen_Producto" />
+                <ScalarProperty Name="usuario_Actualizacion_Producto" ColumnName="usuario_Actualizacion_Producto" />
+                <ScalarProperty Name="fecha_Actualizacion_Producto" ColumnName="fecha_Actualizacion_Producto" />
+                <ScalarProperty Name="usuario_Creacion_Producto" ColumnName="usuario_Creacion_Producto" />
+                <ScalarProperty Name="fecha_Creacion_Producto" ColumnName="fecha_Creacion_Producto" />
+                <ScalarProperty Name="estado_Producto" ColumnName="estado_Producto" />
+                <ScalarProperty Name="precio_Venta_Producto" ColumnName="precio_Venta_Producto" />
+                <ScalarProperty Name="costo_Real_Producto" ColumnName="costo_Real_Producto" />
+                <ScalarProperty Name="costo_Estandar_Producto" ColumnName="costo_Estandar_Producto" />
+                <ScalarProperty Name="stock_Minimo_Producto" ColumnName="stock_Minimo_Producto" />
+                <ScalarProperty Name="stock_Producto" ColumnName="stock_Producto" />
+                <ScalarProperty Name="id_Categoria_Producto" ColumnName="id_Categoria_Producto" />
+                <ScalarProperty Name="descripcion_Producto" ColumnName="descripcion_Producto" />
+                <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="CateringModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="usuario_Creacion_Actualizacion" ColumnName="usuario_Creacion_Actualizacion" />
+                <ScalarProperty Name="fecha_Creacion_Actualizacion" ColumnName="fecha_Creacion_Actualizacion" />
+                <ScalarProperty Name="usuario_Creacion_Categoria" ColumnName="usuario_Creacion_Categoria" />
+                <ScalarProperty Name="fecha_Creacion_Categoria" ColumnName="fecha_Creacion_Categoria" />
+                <ScalarProperty Name="estado_Categoria" ColumnName="estado_Categoria" />
+                <ScalarProperty Name="tipo_Categoria" ColumnName="tipo_Categoria" />
+                <ScalarProperty Name="descripcion_Categoria" ColumnName="descripcion_Categoria" />
+                <ScalarProperty Name="id_Categoria" ColumnName="id_Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ObtenerPlanAtencion" FunctionName="CateringModel.Store.usp_ObtenerPlanAtencion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CateringModel.usp_ObtenerPlanAtencion_Result">
+                <ScalarProperty Name="id_Plan" ColumnName="id_Plan" />
+                <ScalarProperty Name="empresa_Plan" ColumnName="empresa_Plan" />
+                <ScalarProperty Name="sede_Plan" ColumnName="sede_Plan" />
+                <ScalarProperty Name="fecha_Plan" ColumnName="fecha_Plan" />
+                <ScalarProperty Name="turno_Plan" ColumnName="turno_Plan" />
+                <ScalarProperty Name="id_Categoria_Plan" ColumnName="id_Categoria_Plan" />
+                <ScalarProperty Name="id_Item_Plan" ColumnName="id_Item_Plan" />
+                <ScalarProperty Name="cantidad_Plan" ColumnName="cantidad_Plan" />
+                <ScalarProperty Name="estado_Plan" ColumnName="estado_Plan" />
+                <ScalarProperty Name="precio_Venta_Plan" ColumnName="precio_Venta_Plan" />
+                <ScalarProperty Name="costo_Estandar_Plan" ColumnName="costo_Estandar_Plan" />
+                <ScalarProperty Name="costo_Real_Plan" ColumnName="costo_Real_Plan" />
+                <ScalarProperty Name="fecha_Creacion_Plan" ColumnName="fecha_Creacion_Plan" />
+                <ScalarProperty Name="usuario_Creacion_Plan" ColumnName="usuario_Creacion_Plan" />
+                <ScalarProperty Name="fecha_Actualizacion_Plan" ColumnName="fecha_Actualizacion_Plan" />
+                <ScalarProperty Name="usuario_Actualizacion_Plan" ColumnName="usuario_Actualizacion_Plan" />
+                <ScalarProperty Name="descripcion_Menu" ColumnName="descripcion_Menu" />
+                <ScalarProperty Name="imagen_Menu" ColumnName="imagen_Menu" />
+                <ScalarProperty Name="descripcion_Plato" ColumnName="descripcion_Plato" />
+                <ScalarProperty Name="imagen_Plato" ColumnName="imagen_Plato" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

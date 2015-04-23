@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4239BDCC-CF56-4A60-B330-510DC56ACF6D}</ProjectGuid>
+    <ProjectGuid>{D1E6801C-9AB6-43AD-B8C2-2062F1B6862B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Catering.BLL.BL</RootNamespace>
-    <AssemblyName>Catering.BLL.BL</AssemblyName>
+    <RootNamespace>Framework.LibraryApp</RootNamespace>
+    <AssemblyName>Framework.LibraryApp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Catering.BLL.BL.xml</DocumentationFile>
+    <DocumentationFile>Framework.LibraryApp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Catering.BLL.BL.xml</DocumentationFile>
+    <DocumentationFile>Framework.LibraryApp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,6 +45,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,14 +64,15 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contrato\ICategoriaBL.vb" />
-    <Compile Include="Contrato\IPlanAtencionBL.vb" />
-    <Compile Include="Contrato\IPlatoBL.vb" />
-    <Compile Include="Contrato\IProductoBL.vb" />
-    <Compile Include="Implementacion\CategoriaBL.vb" />
-    <Compile Include="Implementacion\PlanAtencionBL.vb" />
-    <Compile Include="Implementacion\PlatoBL.vb" />
-    <Compile Include="Implementacion\ProductoBL.vb" />
+    <Compile Include="Controles Base\ButtonBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controles Base\FormBase.Designer.vb">
+      <DependentUpon>FormBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles Base\FormBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -87,6 +90,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controles Base\FormBase.resx">
+      <DependentUpon>FormBase.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -105,17 +111,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Catering.BLL.BE\Catering.BLL.BE.vbproj">
-      <Project>{ca37ae3c-757e-42c3-a1c7-971b214a233f}</Project>
-      <Name>Catering.BLL.BE</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Catering.DL.DAO\Catering.DL.DAO.vbproj">
-      <Project>{508ce100-a178-4393-840a-cc5dcf92c472}</Project>
-      <Name>Catering.DL.DAO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
